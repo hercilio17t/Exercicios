@@ -4,7 +4,9 @@
   "description": "1. Faça o fork deste repositório\r 2. Clone o repositório forkado\r 3. Abra-o no VS Code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "ts-node src/servidor.ts",
+    "start": "node dist/servidor.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +20,6 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
-  }
+  },
+  "type": "module"
 }
