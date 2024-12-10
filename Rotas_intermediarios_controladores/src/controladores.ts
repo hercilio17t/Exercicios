@@ -1,4 +1,4 @@
-import { Request, RequestParamHandler, Response } from "express"
+import { NextFunction, Request, RequestParamHandler, Response } from "express"
 import bancoDeDados from "../bancoDeDados"
 
 
@@ -7,7 +7,18 @@ export const mensagemAPI = (req: Request, res: Response) => {
 }
 
 export const convidados = (req: Request, res: Response) => {
-    res.send(bancoDeDados)
+    const { idadeMaxima } = req.query
+
+    if(!idadeMaxima){
+        res.send(bancoDeDados)
+        return
+    }
+
+    const idade = parseInt(idadeMaxima as string, 10)
+
+    const convidadosFiltrados = bancoDeDados.filter(convidado => convidado.idade <= idade)
+
+    res.send(convidadosFiltrados)
 }
 
 export const convidadoID = (req: Request, res: Response) => {
@@ -23,3 +34,4 @@ export const convidadoID = (req: Request, res: Response) => {
         res.send("Convidado não encontrado")
     }
 }
+
