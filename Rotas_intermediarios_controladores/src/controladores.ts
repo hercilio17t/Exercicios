@@ -6,6 +6,10 @@ export const mensagemAPI = (req: Request, res: Response) => {
     res.send("API de lista de convidados")
 }
 
+export const convidados = (req: Request, res: Response) => {
+    res.send(bancoDeDados)
+}
+
 export const convidadoID = (req: Request, res: Response) => {
     const { id } = req.params
     const IDConvidado = parseInt(id, 10)
@@ -19,4 +23,3 @@ export const convidadoID = (req: Request, res: Response) => {
         res.send("Convidado não encontrado")
     }
 }
-
